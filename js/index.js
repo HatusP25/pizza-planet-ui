@@ -41,7 +41,7 @@ function getOrderData() {
     });
 
     let beverages = [];
-    $.each($("input[name='beverages']:checked"), function (el) {
+    $.each($("input[name='beverage']:checked"), function (el) {
         beverages.push($(this).val());
     });
 
@@ -93,7 +93,7 @@ function fetchBeverages(){
         .then(response => response.json())
         .then(beverages => {
             let rows = beverages.map(element => createBeverageTemplate(element));
-            let table = $("#beverages tbody");
+            let table = $("#beverage tbody");
             table.append(rows);
         });
 }
@@ -103,7 +103,7 @@ function createIngredientTemplate(ingredient) {
     return Mustache.render(template, ingredient);
 }
 function createBeverageTemplate(beverage) {
-    let template = $("#beverages-template")[0].innerHTML;
+    let template = $("#beverage-template")[0].innerHTML;
     return Mustache.render(template, beverage);
 }
 
